@@ -14,4 +14,9 @@ public class TaskService implements ITaskServices {
     public List<TasksModel> getAll() {
         return taskRepository.getAll();
     }
+
+    @Override
+    public boolean insertTask(TasksModel tasksModel) {
+        return taskRepository.insertTask(tasksModel);
+    }
 }

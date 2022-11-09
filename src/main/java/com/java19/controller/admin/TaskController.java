@@ -2,6 +2,9 @@ package com.java19.controller.admin;
 
 
 import com.java19.model.JobsModel;
+import com.java19.model.StatusModel;
+import com.java19.model.TasksModel;
+import com.java19.model.UsersModel;
 import com.java19.service.IJobServices;
 import com.java19.service.ITaskServices;
 import com.java19.service.IUsersService;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
 
 @WebServlet(urlPatterns = {"/admin-task"})
 public class TaskController extends HttpServlet {
@@ -39,20 +43,28 @@ public class TaskController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String taskName = req.getParameter("txtTaskName");
-//        String startDate = req.getParameter("txtStartDate");
-//        String endDate = req.getParameter("txtEndDay");
-//
-//        if(!ValidationUtil.validNull(name, startDate, endDate)){
-//            String mes = "Không được để trống";
-//            req.setAttribute("mes", mes);
-//            req.getRequestDispatcher("views/admin/groupwork-add.jsp").forward(req, resp);
-//        }else {
-//            JobsModel jobsModel = new JobsModel(name, startDate, endDate);
-//            jobServices.insertJob(jobsModel);
-//            resp.sendRedirect(req.getContextPath() + "/admin-work");
-//        }
-        String test = req.getParameter("txtIdUser");
-        System.out.println(test);
+        String taskName = req.getParameter("txtTaskName");
+        String userId = req.getParameter("txtUserId");
+        String workId = req.getParameter("txtWorkId");
+        String startDate = req.getParameter("txtTaskStartDate");
+        String endDate = req.getParameter("txtTaskEndDate");
+
+        if(!ValidationUtil.validNull(taskName, userId, workId, startDate, endDate)){
+            String mes = "Không được để trống";
+            req.setAttribute("mes", mes);
+            req.setAttribute("users", usersService.getAllMember());
+            req.setAttribute("works", jobServices.getAll());
+            req.getRequestDispatcher("views/admin/task-add.jsp").forward(req, resp);
+        }else {
+            UsersModel usersModel = new UsersModel();
+            usersModel.setId(Long.parseLong(userId));
+            JobsModel jobsModel = new JobsModel();
+            jobsModel.setId(Integer.parseInt(workId));
+            StatusModel statusModel = new StatusModel();
+            statusModel.setId(1);
+            TasksModel tasksModel = new TasksModel(taskName, startDate, endDate, usersModel, jobsModel, statusModel);
+            taskServices.insertTask(tasksModel);
+            resp.sendRedirect(req.getContextPath() + "/admin-task");
+        }
     }
 }

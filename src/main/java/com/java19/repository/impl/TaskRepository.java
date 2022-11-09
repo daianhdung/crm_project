@@ -22,7 +22,7 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
         StringBuilder sql = new StringBuilder("INSERT INTO tasks(name, start_date, end_date, user_id, job_id, status_id)");
         sql.append(" VALUES ( ?, STR_TO_DATE( ?, '%d-%m-%Y')");
         sql.append(" , STR_TO_DATE( ?, '%d-%m-%Y')");
-        sql.append(" , ?, ?, ?");
+        sql.append(" , ?, ?, ?)");
         return insert(sql.toString(), tasksModel.getName(), tasksModel.getStartDate(), tasksModel.getEndDate(),
                 tasksModel.getUsersModel().getId(), tasksModel.getJobsModel().getId(),
                 tasksModel.getStatusModel().getId());

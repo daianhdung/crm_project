@@ -41,6 +41,7 @@
                                             class="form-control form-control-line"> </div>
                                 </div>
                                 <div class="form-group">
+                                    <h5 class="text-danger">${mes}</h5>
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-success">Lưu lại</button>
                                         <a href="<c:url value="/admin-work"/>" class="btn btn-primary">Quay lại</a>

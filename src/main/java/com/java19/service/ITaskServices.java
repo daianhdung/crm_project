@@ -7,4 +7,5 @@ import java.util.List;
 public interface ITaskServices {
 
     List<TasksModel> getAll();
+    boolean insertTask(TasksModel tasksModel);
 }

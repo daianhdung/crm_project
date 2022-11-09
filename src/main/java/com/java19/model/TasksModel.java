@@ -10,6 +10,18 @@ public class TasksModel {
     private JobsModel jobsModel;
     private StatusModel statusModel;
 
+    public TasksModel(){}
+
+    public TasksModel(String name, String startDate, String endDate, UsersModel usersModel, JobsModel jobsModel
+    , StatusModel statusModel) {
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.usersModel = usersModel;
+        this.jobsModel = jobsModel;
+        this.statusModel = statusModel;
+    }
+
     public int getId() {
         return id;
     }

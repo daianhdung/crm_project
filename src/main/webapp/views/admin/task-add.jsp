@@ -25,9 +25,9 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Dự án</label>
                                     <div class="col-md-12">
-                                        <select class="form-control form-control-line">
+                                        <select name="txtWorkId" class="form-control form-control-line">
                                             <c:forEach items="${works}" var="work">
-                                                <option>${work.getName()}</option>
+                                                <option value="${work.getId()}">${work.getName()}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Người thực hiện</label>
                                     <div class="col-md-12">
-                                        <select name="txtIdUser" class="form-control form-control-line">
+                                        <select name="txtUserId" class="form-control form-control-line">
                                             <c:forEach items="${users}" var="user">
                                                 <option value="${user.getId()}">${user.getFullname()}</option>
                                             </c:forEach>
@@ -52,18 +52,19 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày bắt đầu</label>
                                     <div class="col-md-12">
-                                        <input name="txtStartDate" type="text" placeholder="dd-MM-yyyy"
+                                        <input name="txtTaskStartDate" type="text" placeholder="dd-MM-yyyy"
                                             class="form-control form-control-line"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày kết thúc</label>
                                     <div class="col-md-12">
-                                        <input name="txtEndDate" type="text" placeholder="dd-MM-yyyy"
+                                        <input name="txtTaskEndDate" type="text" placeholder="dd-MM-yyyy"
                                             class="form-control form-control-line"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <h5 class="text-danger">${mes}</h5>
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-success">Lưu lại</button>
                                         <a href="<c:url value="/admin-task"/>" class="btn btn-primary">Quay lại</a>
