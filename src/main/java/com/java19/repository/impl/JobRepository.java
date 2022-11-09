@@ -18,9 +18,15 @@ public class JobRepository extends AbstractRepository<JobsModel> implements IJob
     }
 
     @Override
-    public boolean insertUser(JobsModel jobsModel) {
+    public boolean insertJob(JobsModel jobsModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO jobs(name, start_date, end_date)");
         sql.append(" VALUES(? , STR_TO_DATE(?, '%d-%m-%Y'), STR_TO_DATE(?, '%d-%m-%Y'))");
         return insert(sql.toString(), jobsModel.getName(), jobsModel.getStart_date(), jobsModel.getEnd_date());
+    }
+
+    @Override
+    public void deleteUsersById(int id) {
+        String sql = "DELETE FROM jobs WHERE id = ?";
+        update(sql, id);
     }
 }

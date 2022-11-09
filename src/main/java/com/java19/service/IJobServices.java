@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface IJobServices {
     List<JobsModel> getAll();
-    boolean insertUser(JobsModel jobsModel);
+    boolean insertJob(JobsModel jobsModel);
+
+    public boolean deleteUsersById(int id);
 }

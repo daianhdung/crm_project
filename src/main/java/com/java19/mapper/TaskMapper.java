@@ -11,15 +11,15 @@ public class TaskMapper implements RowMapper<TasksModel>{
             TasksModel tasksModel = new TasksModel();
             tasksModel.setId(resultSet.getInt("id"));
             tasksModel.setName(resultSet.getString("name"));
-            tasksModel.setStart_date(resultSet.getString("start_date"));
-            tasksModel.setEnd_date(resultSet.getString("end_date"));
+            tasksModel.setStartDate(resultSet.getString("start_date"));
+            tasksModel.setEndDate(resultSet.getString("end_date"));
             try {
                 UsersModel usersModel = new UsersModel();
                 usersModel.setFullname(resultSet.getString("fullname"));
                 JobsModel jobsModel = new JobsModel();
-                jobsModel.setName(resultSet.getString("name"));
+                jobsModel.setName(resultSet.getString("job_name"));
                 StatusModel statusModel = new StatusModel();
-                statusModel.setName(resultSet.getString("name"));
+                statusModel.setName(resultSet.getString("status_name"));
                 tasksModel.setUsersModel(usersModel);
                 tasksModel.setJobsModel(jobsModel);
                 tasksModel.setStatusModel(statusModel);

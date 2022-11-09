@@ -73,6 +73,7 @@
 <script src="<c:url value="/template/plugins/bower_components/toast-master/js/jquery.toast.js"/>"></script>
 <script src="<c:url value="/template/js/role.js"/>"></script>
 <script src="<c:url value="/template/js/member.js"/>"></script>
+<script src="<c:url value="/template/js/job.js"/>"></script>
 <script>
     $(document).ready(function () {
         $('#example').DataTable();

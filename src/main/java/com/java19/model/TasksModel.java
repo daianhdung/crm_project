@@ -4,8 +4,8 @@ public class TasksModel {
 
     private int id;
     private String name;
-    private String start_date;
-    private String end_date;
+    private String startDate;
+    private String endDate;
     private UsersModel usersModel;
     private JobsModel jobsModel;
     private StatusModel statusModel;
@@ -26,20 +26,20 @@ public class TasksModel {
         this.name = name;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEnd_date() {
-        return end_date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public UsersModel getUsersModel() {

@@ -16,7 +16,18 @@ public class JobServices implements IJobServices {
     }
 
     @Override
-    public boolean insertUser(JobsModel jobsModel) {
-        return jobRespository.insertUser(jobsModel);
+    public boolean insertJob(JobsModel jobsModel) {
+        return jobRespository.insertJob(jobsModel);
+    }
+
+    @Override
+    public boolean deleteUsersById(int id) {
+        try {
+            jobRespository.deleteUsersById(id);
+        }catch (Exception e){
+            System.out.println("Lỗi delete jobs");
+            return false;
+        }
+        return true;
     }
 }

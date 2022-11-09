@@ -25,7 +25,10 @@ public class GroupWorkController extends HttpServlet {
         String action = req.getParameter("action");
         if(action == null){
             req.getRequestDispatcher("/views/admin/groupwork.jsp").forward(req, resp);
-        }else if (action.equals("add")) {
+        } else if (action.equals("details")) {
+            req.getRequestDispatcher("/views/admin/groupwork-details.jsp").forward(req, resp);
+
+        } else if (action.equals("add")) {
             req.getRequestDispatcher("views/admin/groupwork-add.jsp").forward(req, resp);
         }
     }
@@ -42,7 +45,7 @@ public class GroupWorkController extends HttpServlet {
             req.getRequestDispatcher("views/admin/groupwork-add.jsp").forward(req, resp);
         }else {
             JobsModel jobsModel = new JobsModel(name, startDate, endDate);
-            jobServices.insertUser(jobsModel);
+            jobServices.insertJob(jobsModel);
             resp.sendRedirect(req.getContextPath() + "/admin-work");
         }
     }

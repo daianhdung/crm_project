@@ -15,7 +15,7 @@
                         <h4 class="page-title">Danh sách công việc</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
-                        <a href="task-add.jsp" class="btn btn-sm btn-success">Thêm mới</a>
+                        <a href="<c:url value="/admin-task?action=add"/>" class="btn btn-sm btn-success">Thêm mới</a>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -38,34 +38,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Phân tích dự án</td>
-                                            <td>Dự án CRM</td>
-                                            <td>Nguyễn Văn Tèo</td>
-                                            <td>22/05/2019</td>
-                                            <td>30/05/2019</td>
-                                            <td>Đã hoàn thành</td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                                <a href="#" class="btn btn-sm btn-info">Xem</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Thiết kế database</td>
-                                            <td>Dự án CRM</td>
-                                            <td>Trần Thị Lan</td>
-                                            <td>22/05/2019</td>
-                                            <td>30/05/2019</td>
-                                            <td>Đang thực hiện</td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                                <a href="#" class="btn btn-sm btn-info">Xem</a>
-                                            </td>
-                                        </tr>
+                                        <c:forEach items="${tasks}" var="task">
+                                            <tr>
+                                                <td>${task.getId()}</td>
+                                                <td>${task.getName()}</td>
+                                                <td>${task.getJobsModel().getName()}</td>
+                                                <td>${task.getUsersModel().getFullname()}</td>
+                                                <td>${task.getStartDate()}</td>
+                                                <td>${task.getEndDate()}</td>
+                                                <td>${task.getStatusModel().getName()}</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-primary">Sửa</a>
+                                                    <a href="#" jobId="${task.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
+                                                    <a href="<c:url value="/admin-task?action=details"/>" class="btn btn-sm btn-info">Xem</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

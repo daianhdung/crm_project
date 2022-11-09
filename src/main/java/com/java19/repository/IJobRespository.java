@@ -8,5 +8,7 @@ public interface IJobRespository extends GenericRepository<JobsModel>{
 
     List<JobsModel> getAll();
 
-    boolean insertUser(JobsModel jobsModel);
+    boolean insertJob(JobsModel jobsModel);
+
+    void deleteUsersById(int id);
 }
