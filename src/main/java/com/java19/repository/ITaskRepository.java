@@ -11,4 +11,10 @@ public interface ITaskRepository extends GenericRepository<TasksModel>{
     boolean insertTask(TasksModel tasksModel);
 
     void deleteUsersById(int id);
+
+    List<TasksModel> getAllById(int id);
+
+    void updateTaskStatus(int statusId, int id);
+
+    TasksModel findOne(int id);
 }

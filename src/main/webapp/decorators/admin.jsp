@@ -74,6 +74,7 @@
 <script src="<c:url value="/template/js/role.js"/>"></script>
 <script src="<c:url value="/template/js/member.js"/>"></script>
 <script src="<c:url value="/template/js/job.js"/>"></script>
+<script src="<c:url value="/template/js/task.js"/>"></script>
 <script>
     $(document).ready(function () {
         $('#example').DataTable();

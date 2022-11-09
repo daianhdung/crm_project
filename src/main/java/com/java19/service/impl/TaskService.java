@@ -19,4 +19,36 @@ public class TaskService implements ITaskServices {
     public boolean insertTask(TasksModel tasksModel) {
         return taskRepository.insertTask(tasksModel);
     }
+
+    @Override
+    public boolean deleteTask(int id) {
+        try {
+            taskRepository.deleteUsersById(id);
+        }catch (Exception e){
+            System.out.println("Lỗi delete task");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public List<TasksModel> getAllById(int id) {
+        return taskRepository.getAllById(id);
+    }
+
+    @Override
+    public boolean updateTask(int statusId, int id) {
+        try {
+            taskRepository.updateTaskStatus(statusId, id);
+        }catch (Exception e){
+            System.out.println("Lỗi update task");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public TasksModel findOne(int id) {
+        return taskRepository.findOne(id);
+    }
 }

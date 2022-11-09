@@ -10,7 +10,8 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
     @Override
     public List<TasksModel> getAll() {
         StringBuilder sql = new StringBuilder("SELECT t.id, t.name, j.name as job_name, u.fullname, ");
-        sql.append(" t.start_date, t.end_date, s.name as status_name FROM tasks t");
+        sql.append(" DATE_FORMAT(t.start_date, '%d-%m-%Y') as start_date,");
+        sql.append(" DATE_FORMAT(t.end_date, '%d-%m-%Y') as end_date, s.name as status_name FROM tasks t");
         sql.append(" LEFT JOIN users u ON t.user_id = u.id");
         sql.append(" LEFT JOIN jobs j ON j.id = t.job_id");
         sql.append(" LEFT JOIN status s ON s.id = t.status_id");
@@ -32,5 +33,36 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
     public void deleteUsersById(int id) {
         String sql = "DELETE FROM tasks WHERE id = ?";
         update(sql, id);
+    }
+
+    @Override
+    public List<TasksModel> getAllById(int id) {
+        StringBuilder sql = new StringBuilder("SELECT t.id, t.name, j.name as job_name, u.fullname, ");
+        sql.append(" DATE_FORMAT(t.start_date, '%d-%m-%Y') as start_date,");
+        sql.append(" DATE_FORMAT(t.end_date, '%d-%m-%Y') as end_date, s.name as status_name FROM tasks t");
+        sql.append(" LEFT JOIN users u ON t.user_id = u.id");
+        sql.append(" LEFT JOIN jobs j ON j.id = t.job_id");
+        sql.append(" LEFT JOIN status s ON s.id = t.status_id");
+        sql.append(" WHERE u.id = ?");
+        return query(sql.toString(), new TaskMapper(), id);
+    }
+
+    @Override
+    public void updateTaskStatus(int statusId, int id) {
+        StringBuilder sql = new StringBuilder("UPDATE tasks");
+        sql.append(" SET status_id = ? WHERE id = ?");
+        update(sql.toString(), statusId, id);
+    }
+
+    @Override
+    public TasksModel findOne(int id) {
+        StringBuilder sql = new StringBuilder("SELECT t.id, t.name, j.name as job_name, u.fullname, ");
+        sql.append(" DATE_FORMAT(t.start_date, '%d-%m-%Y') as start_date,");
+        sql.append(" DATE_FORMAT(t.end_date, '%d-%m-%Y') as end_date, s.name as status_name FROM tasks t");
+        sql.append(" LEFT JOIN users u ON t.user_id = u.id");
+        sql.append(" LEFT JOIN jobs j ON j.id = t.job_id");
+        sql.append(" LEFT JOIN status s ON s.id = t.status_id");
+        sql.append(" WHERE t.id = ?");
+        return query(sql.toString(), new TaskMapper(), id).get(0);
     }
 }

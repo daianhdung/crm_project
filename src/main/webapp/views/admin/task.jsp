@@ -49,7 +49,7 @@
                                                 <td>${task.getStatusModel().getName()}</td>
                                                 <td>
                                                     <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                    <a href="#" jobId="${task.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
+                                                    <a href="#" taskId="${task.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
                                                     <a href="<c:url value="/admin-task?action=details"/>" class="btn btn-sm btn-info">Xem</a>
                                                 </td>
                                             </tr>

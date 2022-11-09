@@ -8,4 +8,12 @@ public interface ITaskServices {
 
     List<TasksModel> getAll();
     boolean insertTask(TasksModel tasksModel);
+
+    boolean deleteTask(int id);
+
+    List<TasksModel> getAllById(int id);
+
+    boolean updateTask(int statusId, int id);
+
+    TasksModel findOne(int id);
 }

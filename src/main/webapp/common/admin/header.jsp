@@ -42,7 +42,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="<c:url value="/admin-profile"/>">Thông tin cá nhân</a></li>
-                        <li><a href="#">Thống kê công việc</a></li>
+                        <li><a href="<c:url value="/admin-profile?action=detail"/>">Thống kê công việc</a></li>
                         <li class="divider"></li>
                         <li><a href="<c:url value="/logout"/>">Đăng xuất</a></li>
                     </ul>
