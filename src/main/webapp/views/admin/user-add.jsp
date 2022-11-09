@@ -46,10 +46,11 @@
                                     <label class="col-sm-12">Select Role</label>
                                     <div class="col-sm-12">
                                         <select name="role" class="form-control form-control-line">
-                                            <option>ROLE_ADMIN</option>
-                                            <option>ROLE_MANAGER</option>
-                                            <option>ROLE_USER</option>
+                                            <c:forEach items="${roles}" var="role">
+                                                <option>${role.getName()}</option>
+                                            </c:forEach>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="form-group">

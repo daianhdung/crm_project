@@ -16,4 +16,6 @@ public interface ITaskServices {
     boolean updateTask(int statusId, int id);
 
     TasksModel findOne(int id);
+
+    List<TasksModel> findTaskByStatusAndUser(int userId, int statusId);
 }

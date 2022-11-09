@@ -25,6 +25,7 @@ public class MemberController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("members", usersService.getAllMember());
+        req.setAttribute("roles", roleService.getAllRoles());
         String action = req.getParameter("action");
         if(action == null){
             req.getRequestDispatcher("views/admin/user-table.jsp").forward(req, resp);

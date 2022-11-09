@@ -23,11 +23,15 @@ public class ProfileController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("members", usersService.getAllMember());
         UsersModel usersModel = (UsersModel) SessionUtil.getInstance().getValue(req,"isLogin");
-        req.setAttribute("tasks", taskServices.getAllById((int) usersModel.getId()));
+        int userIdLogin = (int) usersModel.getId();
+        req.setAttribute("tasks", taskServices.getAllById(userIdLogin));
         String action = req.getParameter("action");
         if(action == null){
             req.getRequestDispatcher("/views/admin/profile.jsp").forward(req, resp);
         }else if (action.equals("detail")) {
+            req.setAttribute("taskHavenDone", taskServices.findTaskByStatusAndUser(userIdLogin, 1));
+            req.setAttribute("taskDoing", taskServices.findTaskByStatusAndUser(userIdLogin, 2));
+            req.setAttribute("taskComplete", taskServices.findTaskByStatusAndUser(userIdLogin, 3));
             req.getRequestDispatcher("views/admin/user-details.jsp").forward(req, resp);
         }else if (action.equals("edit")) {
             int id = Integer.parseInt(req.getParameter("id"));

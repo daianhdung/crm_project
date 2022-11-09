@@ -17,4 +17,6 @@ public interface ITaskRepository extends GenericRepository<TasksModel>{
     void updateTaskStatus(int statusId, int id);
 
     TasksModel findOne(int id);
+
+    List<TasksModel> getTaskByStatusAndUser(int userId, int statusId);
 }

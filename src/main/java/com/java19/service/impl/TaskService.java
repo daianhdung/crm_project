@@ -51,4 +51,9 @@ public class TaskService implements ITaskServices {
     public TasksModel findOne(int id) {
         return taskRepository.findOne(id);
     }
+
+    @Override
+    public List<TasksModel> findTaskByStatusAndUser(int userId, int statusId) {
+        return taskRepository.getTaskByStatusAndUser(userId, statusId);
+    }
 }

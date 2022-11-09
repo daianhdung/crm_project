@@ -115,22 +115,18 @@
                         <div class="white-box">
                             <h3 class="box-title">Chưa thực hiện</h3>
                             <div class="message-center">
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Phân tích hệ thống</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a> 
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Thiết kế database</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a>
+                                <c:forEach items="${taskHavenDone}" var="task">
+                                    <a href="#">
+                                        <div class="mail-contnet">
+                                            <h4>${task.getJobsModel().getName()}</h4>
+                                            <h5>${task.getName()}</h5>
+                                            <span class="mail-desc"></span>
+                                            <span class="time">Bắt đầu: ${task.getStartDate()}</span>
+                                            <span class="time">Kết thúc: ${task.getEndDate()}</span>
+                                            </tr>
+                                        </div>
+                                    </a>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -138,22 +134,18 @@
                         <div class="white-box">
                             <h3 class="box-title">Đang thực hiện</h3>
                             <div class="message-center">
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Phân tích hệ thống</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a> 
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Thiết kế database</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a>
+                                <c:forEach items="${taskDoing}" var="task">
+                                    <a href="#">
+                                        <div class="mail-contnet">
+                                            <h4>${task.getJobsModel().getName()}</h4>
+                                            <h5>${task.getName()}</h5>
+                                            <span class="mail-desc"></span>
+                                            <span class="time">Bắt đầu: ${task.getStartDate()}</span>
+                                            <span class="time">Kết thúc: ${task.getEndDate()}</span>
+                                            </tr>
+                                        </div>
+                                    </a>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -161,22 +153,18 @@
                         <div class="white-box">
                             <h3 class="box-title">Đã hoàn thành</h3>
                             <div class="message-center">
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Phân tích hệ thống</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a> 
-                                <a href="#">
-                                    <div class="mail-contnet">
-                                        <h5>Thiết kế database</h5>
-                                        <span class="mail-desc"></span>
-                                        <span class="time">Bắt đầu: 05/07/2020</span>
-                                        <span class="time">Kết thúc: 17/07/2020</span>
-                                    </div>
-                                </a>
+                                <c:forEach items="${taskComplete}" var="task">
+                                    <a href="#">
+                                        <div class="mail-contnet">
+                                            <h4>${task.getJobsModel().getName()}</h4>
+                                            <h5>${task.getName()}</h5>
+                                            <span class="mail-desc"></span>
+                                            <span class="time">Bắt đầu: ${task.getStartDate()}</span>
+                                            <span class="time">Kết thúc: ${task.getEndDate()}</span>
+                                            </tr>
+                                        </div>
+                                    </a>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>

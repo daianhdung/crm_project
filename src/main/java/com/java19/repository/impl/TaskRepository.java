@@ -65,4 +65,16 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
         sql.append(" WHERE t.id = ?");
         return query(sql.toString(), new TaskMapper(), id).get(0);
     }
+
+    @Override
+    public List<TasksModel> getTaskByStatusAndUser(int userId, int statusId) {
+        StringBuilder sql = new StringBuilder("SELECT t.id, t.name, j.name as job_name, u.fullname, ");
+        sql.append(" DATE_FORMAT(t.start_date, '%d-%m-%Y') as start_date,");
+        sql.append(" DATE_FORMAT(t.end_date, '%d-%m-%Y') as end_date, s.name as status_name FROM tasks t");
+        sql.append(" LEFT JOIN users u ON t.user_id = u.id");
+        sql.append(" LEFT JOIN jobs j ON j.id = t.job_id");
+        sql.append(" LEFT JOIN status s ON s.id = t.status_id");
+        sql.append(" WHERE s.id = ? AND u.id = ?");
+        return query(sql.toString(), new TaskMapper(), statusId, userId);
+    }
 }
