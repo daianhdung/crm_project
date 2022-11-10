@@ -18,4 +18,7 @@ public interface ITaskServices {
     TasksModel findOne(int id);
 
     List<TasksModel> findTaskByStatusAndUser(int userId, int statusId);
+
+    List<Integer> findIdUserInProject(int jobId);
+
 }

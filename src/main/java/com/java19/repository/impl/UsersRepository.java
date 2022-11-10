@@ -44,5 +44,11 @@ public class UsersRepository extends AbstractRepository<UsersModel> implements I
                 usersModel.getRole_id());
     }
 
+    @Override
+    public UsersModel getNameById(int userId) {
+        String sql = "SELECT * FROM users u JOIN roles r ON u.role_id = r.id WHERE u.id = ?";
+        return query(sql, new UserMapper(), userId).get(0);
+    }
+
 
 }

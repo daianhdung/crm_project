@@ -44,7 +44,7 @@
                                                 <td>
                                                     <a href="#" class="btn btn-sm btn-primary">Sửa</a>
                                                     <a href="#" jobId="${work.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
-                                                    <a href="<c:url value="/admin-work?action=details"/>" class="btn btn-sm btn-info">Xem</a>
+                                                    <a href="<c:url value="/admin-work?action=details&id=${work.getId()}"/>" class="btn btn-sm btn-info">Xem</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

@@ -9,4 +9,6 @@ public interface IUsersService {
     List<UsersModel> getAllMember();
     public boolean deleteUsersById(int id);
     boolean insertUser(UsersModel usersModel);
+
+    UsersModel getNameById(int id);
 }

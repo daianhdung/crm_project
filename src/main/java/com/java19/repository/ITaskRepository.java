@@ -19,4 +19,7 @@ public interface ITaskRepository extends GenericRepository<TasksModel>{
     TasksModel findOne(int id);
 
     List<TasksModel> getTaskByStatusAndUser(int userId, int statusId);
+
+    List<Integer> findIdUserInProject(int jobId);
+
 }

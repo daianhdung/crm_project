@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("/views/login.jsp").forward(req,resp);
         } else {
             UsersModel isLogin = loginService.checkLoginAndGetRole(email, password);
-            SessionUtil.getInstance().putValue(req,"isLogin", isLogin, 400);
+            SessionUtil.getInstance().putValue(req,"isLogin", isLogin, 1000);
 
             //Nếu hàm checkLogin false => không có email,pw trong DB
             if(isLogin == null){

@@ -12,4 +12,6 @@ public interface IUsersRepository extends GenericRepository<UsersModel>{
     List<UsersModel> getAllMember();
 
     boolean insertUser(UsersModel usersModel);
+
+    UsersModel getNameById(int userId);
 }

@@ -1,5 +1,7 @@
 package com.java19.model;
 
+import java.util.List;
+
 public class UsersModel {
     private long id;
     private String email;
@@ -7,6 +9,10 @@ public class UsersModel {
     private  String fullname;
     private String avatar;
     private int role_id;
+    private List<TasksModel> undoneTask;
+    private List<TasksModel> progressTask;
+    private List<TasksModel> completeTask;
+
 
     private RoleModel role = new RoleModel();
     public UsersModel() {}
@@ -71,5 +77,29 @@ public class UsersModel {
     }
     public void setRole(RoleModel role) {
         this.role = role;
+    }
+
+    public List<TasksModel> getUndoneTask() {
+        return undoneTask;
+    }
+
+    public void setUndoneTask(List<TasksModel> undoneTask) {
+        this.undoneTask = undoneTask;
+    }
+
+    public List<TasksModel> getProgressTask() {
+        return progressTask;
+    }
+
+    public void setProgressTask(List<TasksModel> progressTask) {
+        this.progressTask = progressTask;
+    }
+
+    public List<TasksModel> getCompleteTask() {
+        return completeTask;
+    }
+
+    public void setCompleteTask(List<TasksModel> completeTask) {
+        this.completeTask = completeTask;
     }
 }

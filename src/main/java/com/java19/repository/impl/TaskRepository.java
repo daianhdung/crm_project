@@ -1,9 +1,15 @@
 package com.java19.repository.impl;
 
+import com.java19.config.MysqlConnection;
 import com.java19.mapper.TaskMapper;
 import com.java19.model.TasksModel;
 import com.java19.repository.ITaskRepository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository extends AbstractRepository<TasksModel> implements ITaskRepository {
@@ -77,4 +83,33 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
         sql.append(" WHERE s.id = ? AND u.id = ?");
         return query(sql.toString(), new TaskMapper(), statusId, userId);
     }
+
+    @Override
+    public List<Integer> findIdUserInProject(int jobId) {
+        List<Integer> listIdUser = new ArrayList<>();
+        String sql = ("SELECT user_id FROM tasks WHERE job_id = ? group by user_id");
+        Connection connection = MysqlConnection.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = null;
+            statement.setInt(1, jobId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                listIdUser.add(resultSet.getInt("user_id"));
+            }
+            return listIdUser;
+        }catch (Exception e){
+            System.out.println("Lỗi findIdUserInProject");
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return null;
+    }
+
+
+
 }

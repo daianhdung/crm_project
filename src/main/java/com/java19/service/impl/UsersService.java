@@ -31,5 +31,10 @@ public class UsersService implements IUsersService {
         return usersRepository.insertUser(usersModel);
     }
 
+    @Override
+    public UsersModel getNameById(int id) {
+        return usersRepository.getNameById(id);
+    }
+
 
 }
