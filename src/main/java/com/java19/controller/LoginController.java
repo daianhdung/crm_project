@@ -1,6 +1,7 @@
 package com.java19.controller;
 
 
+import com.java19.utils.CookieUtil;
 import com.java19.utils.SessionUtil;
 import com.java19.model.UsersModel;
 import com.java19.service.impl.LoginService;
@@ -34,7 +35,8 @@ public class LoginController extends HttpServlet {
         } else {
             UsersModel isLogin = loginService.checkLoginAndGetRole(email, password);
             SessionUtil.getInstance().putValue(req,"isLogin", isLogin, 1000);
-
+            CookieUtil.createCookie("email", email, 10*60, resp);
+            CookieUtil.createCookie("password", password, 10*60, resp);
             //Nếu hàm checkLogin false => không có email,pw trong DB
             if(isLogin == null){
                 message = "Không đúng id or pass";
