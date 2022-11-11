@@ -11,4 +11,6 @@ public interface IUsersService {
     boolean insertUser(UsersModel usersModel);
 
     UsersModel getNameById(int id);
+
+    UsersModel findUserById(int id);
 }

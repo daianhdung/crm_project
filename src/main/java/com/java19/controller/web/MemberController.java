@@ -24,11 +24,6 @@ public class MemberController extends HttpServlet {
         String action = req.getParameter("action");
         if(action == null){
             req.getRequestDispatcher("views/web/user-table.jsp").forward(req, resp);
-        } else if (action.equals("detail")) {
-            int index = Integer.parseInt(req.getParameter("id"));
-            UsersModel user = listMember.get(index - 1);
-            req.setAttribute("user", user);
-            req.getRequestDispatcher("views/web/user-details.jsp").forward(req, resp);
         }
 
     }

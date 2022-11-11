@@ -36,5 +36,10 @@ public class UsersService implements IUsersService {
         return usersRepository.getNameById(id);
     }
 
+    @Override
+    public UsersModel findUserById(int id) {
+        return usersRepository.findUserById(id);
+    }
+
 
 }

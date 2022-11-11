@@ -50,5 +50,11 @@ public class UsersRepository extends AbstractRepository<UsersModel> implements I
         return query(sql, new UserMapper(), userId).get(0);
     }
 
+    @Override
+    public UsersModel findUserById(int id) {
+        String sql = "SELECT * FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.id = ?";
+        return query(sql, new UserMapper(), id).get(0);
+    }
+
 
 }

@@ -14,4 +14,6 @@ public interface IUsersRepository extends GenericRepository<UsersModel>{
     boolean insertUser(UsersModel usersModel);
 
     UsersModel getNameById(int userId);
+
+    UsersModel findUserById(int id);
 }
