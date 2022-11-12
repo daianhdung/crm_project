@@ -24,4 +24,6 @@ public class JobApi extends HttpServlet {
         boolean isSuccess = jobServices.deleteUsersById(id);
         GenericApi.returnRespond(200, isSuccess, isSuccess ? "Xóa thành công" : "Xóa thất bại", resp);
     }
+
+
 }

@@ -29,7 +29,7 @@ public class MemberController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("members", usersService.getAllMember());
-        List<UsersModel> listMember = usersService.getAllMember();
+        List<RoleModel> listMember = roleService.getAllRoles();
         req.setAttribute("roles", listMember);
         String action = req.getParameter("action");
         if(action == null){
@@ -65,7 +65,6 @@ public class MemberController extends HttpServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
             String role = req.getParameter("role");
-
             if(!ValidationUtil.validNull(username, email, password, role)){
                 String mes = "Không được để trống";
                 req.setAttribute("mes", mes);
