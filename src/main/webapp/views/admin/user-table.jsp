@@ -29,7 +29,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Full Name</th>
-                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Role</th>
                                 <th>#</th>
                             </tr>
@@ -42,7 +42,7 @@
                                     <td>${mem.getEmail()}</td>
                                     <td>${mem.getRole().getName()}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-primary">Sửa</a>
+                                        <a href="<c:url value="/admin-member?action=edit&id=${mem.getId()}"/>" class="btn btn-sm btn-primary">Sửa</a>
                                         <a href="#" memId="${mem.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
                                         <a href="<c:url value="/admin-member?action=detail&id=${mem.getId()}"/>" class="btn btn-sm btn-info">Xem</a>
                                     </td>

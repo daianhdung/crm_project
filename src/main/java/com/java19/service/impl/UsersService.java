@@ -41,5 +41,16 @@ public class UsersService implements IUsersService {
         return usersRepository.findUserById(id);
     }
 
+    @Override
+    public boolean updateRoleUser(int userId, int roleId) {
+        try {
+            usersRepository.updateRoleUser(userId, roleId);
+        }catch (Exception e){
+            System.out.println("Error update role user");
+            return false;
+        }
+        return true;
+    }
+
 
 }

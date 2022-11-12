@@ -13,4 +13,6 @@ public interface IUsersService {
     UsersModel getNameById(int id);
 
     UsersModel findUserById(int id);
+
+    boolean updateRoleUser(int userId, int roleId);
 }

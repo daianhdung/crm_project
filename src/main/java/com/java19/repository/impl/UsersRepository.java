@@ -56,5 +56,11 @@ public class UsersRepository extends AbstractRepository<UsersModel> implements I
         return query(sql, new UserMapper(), id).get(0);
     }
 
+    @Override
+    public void updateRoleUser(int userId, int roleId) {
+        String sql = "UPDATE users SET role_id = ? WHERE id = ?";
+        update(sql, roleId, userId);
+    }
+
 
 }

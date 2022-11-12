@@ -37,7 +37,10 @@ public class MemberController extends HttpServlet {
         }else if (action.equals("addmem")) {
             req.getRequestDispatcher("views/admin/user-add.jsp").forward(req, resp);
         }else if (action.equals("edit")) {
-            req.getRequestDispatcher("views/admin/user-edit.jsp").forward(req, resp);
+            int id = Integer.parseInt(req.getParameter("id"));
+            req.setAttribute("userEdit", usersService.findUserById(id));
+            req.setAttribute("listRole", roleService.getAllRoles());
+            req.getRequestDispatcher("views/admin/role-edit.jsp").forward(req, resp);
         } else if (action.equals("detail")) {
             int id = Integer.parseInt(req.getParameter("id"));
             UsersModel user = usersService.findUserById(id);
@@ -51,20 +54,31 @@ public class MemberController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        String role = req.getParameter("role");
-
-        if(!ValidationUtil.validNull(username, email, password, role)){
-            String mes = "Không được để trống";
-            req.setAttribute("mes", mes);
-            req.getRequestDispatcher("views/admin/user-add.jsp").forward(req, resp);
-        }else {
-            int id = roleService.findIdByName(role);
-            UsersModel usersModel = new UsersModel(email, password, username, id);
-            usersService.insertUser(usersModel);
+        String action = req.getParameter("action");
+        if(action.equals("edit")){
+            int id = Integer.parseInt(req.getParameter("id"));
+            int roleId = Integer.parseInt(req.getParameter("txtRole"));
+            usersService.updateRoleUser(id, roleId);
             resp.sendRedirect(req.getContextPath() + "/admin-member");
+        }else if (action.equals("addmem")) {
+            String username = req.getParameter("username");
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
+            String role = req.getParameter("role");
+
+            if(!ValidationUtil.validNull(username, email, password, role)){
+                String mes = "Không được để trống";
+                req.setAttribute("mes", mes);
+                req.getRequestDispatcher("views/admin/user-add.jsp").forward(req, resp);
+            }else {
+                int id = roleService.findIdByName(role);
+                UsersModel usersModel = new UsersModel(email, password, username, id);
+                usersService.insertUser(usersModel);
+                resp.sendRedirect(req.getContextPath() + "/admin-member");
+            }
         }
+
+
+
     }
 }

@@ -16,4 +16,6 @@ public interface IUsersRepository extends GenericRepository<UsersModel>{
     UsersModel getNameById(int userId);
 
     UsersModel findUserById(int id);
+
+    void updateRoleUser(int userId, int roleId);
 }
