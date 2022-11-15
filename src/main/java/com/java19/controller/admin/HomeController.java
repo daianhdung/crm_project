@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "adminHome", urlPatterns = {"/admin-home", "/admin-home2"})
+@WebServlet(name = "adminHome", urlPatterns = {"/admin-home"})
 public class HomeController extends HttpServlet {
 
     @Override
