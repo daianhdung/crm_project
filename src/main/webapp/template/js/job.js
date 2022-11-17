@@ -17,6 +17,14 @@ $(document).ready(function () {
                 //xóa thất bại
                 alert("Xoá thất bại")
             }
-        });
+        })
+    });
+    $('#edit-job').click(function (){
+        var data = {}
+        var formEditJob = $("#jobEdit").serializeArray()
+        $.each(formEditJob, function (i, v) {
+            data[""+v.name+""] = v.value
+        })
+        console.log(data)
     })
 })

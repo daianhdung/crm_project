@@ -30,4 +30,20 @@ public class JobServices implements IJobServices {
         }
         return true;
     }
+
+    @Override
+    public JobsModel findJobById(int id) {
+        return jobRespository.findJobById(id);
+    }
+
+    @Override
+    public boolean updateJob(JobsModel jobsModel) {
+        try {
+            jobRespository.updateJob(jobsModel);
+        }catch (Exception e){
+            System.out.println("Error update job");
+            return false;
+        }
+        return true;
+    }
 }

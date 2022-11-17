@@ -11,4 +11,7 @@ public interface IJobRespository extends GenericRepository<JobsModel>{
     boolean insertJob(JobsModel jobsModel);
 
     void deleteUsersById(int id);
+
+    JobsModel findJobById(int id);
+    void updateJob(JobsModel jobsModel);
 }

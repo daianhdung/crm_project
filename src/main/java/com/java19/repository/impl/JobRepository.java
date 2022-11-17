@@ -29,4 +29,18 @@ public class JobRepository extends AbstractRepository<JobsModel> implements IJob
         String sql = "DELETE FROM jobs WHERE id = ?";
         update(sql, id);
     }
+
+    @Override
+    public JobsModel findJobById(int id) {
+        StringBuilder sql = new StringBuilder("SELECT id, name");
+        sql.append(" , DATE_FORMAT(start_date, '%d-%m-%Y')  as start_date, ");
+        sql.append("DATE_FORMAT(end_date, '%d-%m-%Y') as end_date FROM jobs WHERE id = ?");
+        return query(sql.toString(), new JobMapper(), id).get(0);
+    }
+
+    @Override
+    public void updateJob(JobsModel jobsModel) {
+        String sql = "UPDATE jobs SET name = ?, end_date = STR_TO_DATE(?, '%d-%m-%Y') WHERE id = ?";
+        update(sql, jobsModel.getName(), jobsModel.getEnd_date(), jobsModel.getId());
+    }
 }

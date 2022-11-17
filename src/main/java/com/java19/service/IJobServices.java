@@ -9,4 +9,6 @@ public interface IJobServices {
     boolean insertJob(JobsModel jobsModel);
 
     public boolean deleteUsersById(int id);
+    JobsModel findJobById(int id);
+    boolean updateJob(JobsModel jobsModel);
 }

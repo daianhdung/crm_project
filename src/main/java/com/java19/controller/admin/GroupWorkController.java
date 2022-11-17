@@ -49,7 +49,13 @@ public class GroupWorkController extends HttpServlet {
 
         } else if (action.equals("add")) {
             req.getRequestDispatcher("views/admin/groupwork-add.jsp").forward(req, resp);
+        } else if (action.equals("edit")) {
+            int id = Integer.parseInt(req.getParameter("id"));
+            req.setAttribute("work", jobServices.findJobById(id));
+            req.getRequestDispatcher("/views/admin/job-edit.jsp").forward(req, resp);
         }
+
+
     }
 
     @Override
