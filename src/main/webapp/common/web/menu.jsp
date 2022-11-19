@@ -15,15 +15,7 @@
                                                             aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li>
-                <a href="<c:url value="/member"/>" class="waves-effect"><i class="fa fa-user fa-fw"
-                                                                 aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
-            </li>
-            <li>
-                <a href="groupwork.jsp" class="waves-effect"><i class="fa fa-table fa-fw"
-                                                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
-            </li>
-            <li>
-                <a href="task.jsp" class="waves-effect"><i class="fa fa-table fa-fw"
+                <a href="<c:url value="/task"/>" class="waves-effect"><i class="fa fa-table fa-fw"
                                                            aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
             </li>
         </ul>

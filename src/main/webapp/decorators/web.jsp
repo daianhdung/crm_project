@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/template/plugins/images/favicon.png"/>">
-    <title><dec:title default="Web"/> </title>
+    <title><dec:title default="Manager"/> </title>
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/template/bootstrap/dist/css/bootstrap.min.css"/>" rel="stylesheet">
     <!-- Menu CSS -->
@@ -29,7 +29,6 @@
     <!-- color CSS -->
     <link href="<c:url value="/template/css/colors/blue-dark.css"/>" id="theme" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/template/css/custom.css"/>">
-
 </head>
 
 <body>
@@ -77,6 +76,9 @@
 <script src="<c:url value="/template/js/custom.min.js"/>"></script>
 <script src="<c:url value="/template/js/dashboard1.js"/>"></script>
 <script src="<c:url value="/template/plugins/bower_components/toast-master/js/jquery.toast.js"/>"></script>
+<script src="<c:url value="/template/js/member.js"/>"></script>
+<script src="<c:url value="/template/js/job.js"/>"></script>
+<script src="<c:url value="/template/js/task.js"/>"></script>
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
