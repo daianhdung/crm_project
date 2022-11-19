@@ -50,7 +50,6 @@
                                                 <td>
                                                     <a href="<c:url value="/admin-task?action=edit&id=${task.getId()}"/>" class="btn btn-sm btn-primary">Sửa</a>
                                                     <a href="#" taskId="${task.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
-                                                    <a href="<c:url value="/admin-task?action=details"/>" class="btn btn-sm btn-info">Xem</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
