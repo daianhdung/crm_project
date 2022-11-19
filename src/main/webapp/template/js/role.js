@@ -13,9 +13,15 @@ $(document).ready(function () {
             // data: { name: "John", location: "Boston" } => gửi tham số dạng post
         }).done(function( data ) {
                     //Xóa thành công
-                    This.closest("tr").remove()
+                    if(data.success){
+                        This.closest("tr").remove()
+                        showToastSuccess('Thao tác thành công', 'delete role')
+                    }else{
+                        showToastError("Thất bại", 'delete role')
+                    }
+                    
             }).fail(function (data){
-            alert("errror")
+                showToastError("Thất bại", 'delete role')
         })
     })
 })

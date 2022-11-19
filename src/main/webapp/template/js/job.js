@@ -36,9 +36,10 @@ $(document).ready(function () {
             if(data.success){
                 //Xóa thành công
                 This.closest("tr").remove()
+                showToastSuccess('Thao tác thành công', 'delete job')
             }else {
                 //xóa thất bại
-                alert("Xoá thất bại")
+                showToastError("Thất bại", 'delete job')
             }
         })
     });
