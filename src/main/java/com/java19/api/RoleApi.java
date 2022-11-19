@@ -28,7 +28,6 @@ public class RoleApi extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-
         int id = Integer.parseInt(req.getParameter("id"));
         boolean isSuccess = roleService.deleteRolesById(id);
 

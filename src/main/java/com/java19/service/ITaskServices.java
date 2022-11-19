@@ -21,4 +21,6 @@ public interface ITaskServices {
 
     List<Integer> findIdUserInProject(int jobId);
 
+    boolean updateTask(TasksModel tasksModel);
+
 }

@@ -30,13 +30,12 @@ public class JobApi extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
         GenericApi.setType(resp);
         Gson gson = new Gson();
         String Data = GenericApi.getParamsFromPost(req);
         JobsModel jobsModel = gson.fromJson(Data, JobsModel.class);
         boolean isSuccess = jobServices.updateJob(jobsModel);
-        GenericApi.returnRespond(200, isSuccess, isSuccess ? "Xóa thành công" : "Xóa thất bại", resp);
+        GenericApi.returnRespond(200, isSuccess, isSuccess ? "Update thành công" : "Update thất bại", resp);
     }
 
 

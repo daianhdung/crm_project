@@ -22,4 +22,6 @@ public interface ITaskRepository extends GenericRepository<TasksModel>{
 
     List<Integer> findIdUserInProject(int jobId);
 
+    void updateTask(TasksModel tasksModel);
+
 }

@@ -62,4 +62,15 @@ public class TaskService implements ITaskServices {
         return taskRepository.findIdUserInProject(jobId);
     }
 
+    @Override
+    public boolean updateTask(TasksModel tasksModel) {
+        try {
+            taskRepository.updateTask(tasksModel);
+        }catch (Exception e){
+            System.out.println("Error update task");
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -38,6 +38,10 @@ public class TaskController extends HttpServlet {
             req.getRequestDispatcher("/views/admin/task.jsp").forward(req, resp);
         } else if (action.equals("add")) {
             req.getRequestDispatcher("views/admin/task-add.jsp").forward(req, resp);
+        } else if (action.equals("edit")) {
+            int id = Integer.parseInt(req.getParameter("id"));
+            req.setAttribute("task", taskServices.findOne(id));
+            req.getRequestDispatcher("views/admin/task-edit.jsp").forward(req, resp);
         }
     }
 

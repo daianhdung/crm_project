@@ -1,14 +1,22 @@
 package com.java19.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TasksModel {
 
     private int id;
     private String name;
+
+    @SerializedName("startDate")
     private String startDate;
+    @SerializedName("endDate")
     private String endDate;
     private UsersModel usersModel;
     private JobsModel jobsModel;
     private StatusModel statusModel;
+    @SerializedName("statusId")
+    private int statusId;
+    private int userId;
 
     public TasksModel(){}
 
@@ -76,5 +84,21 @@ public class TasksModel {
 
     public void setStatusModel(StatusModel statusModel) {
         this.statusModel = statusModel;
+    }
+
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

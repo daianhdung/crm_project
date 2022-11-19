@@ -110,6 +110,13 @@ public class TaskRepository extends AbstractRepository<TasksModel> implements IT
         return null;
     }
 
+    @Override
+    public void updateTask(TasksModel tasksModel) {
+        StringBuilder sql = new StringBuilder("Update tasks SET name = ?, status_id = ?, user_id = ?,");
+        sql.append("  end_date = STR_TO_DATE(?, '%d-%m-%Y') WHERE id = ?");
+        update(sql.toString(), tasksModel.getName(), tasksModel.getStatusId(), tasksModel.getUserId(), tasksModel.getEndDate(),
+                tasksModel.getId());
+    }
 
 
 }
