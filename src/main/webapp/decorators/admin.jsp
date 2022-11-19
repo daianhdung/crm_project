@@ -25,6 +25,9 @@
     <!-- color CSS -->
     <link href="<c:url value="/template/css/colors/blue-dark.css"/>" id="theme" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/template/css/custom.css"/>">
+
+
+
 </head>
 
 <body>
@@ -40,7 +43,6 @@
     <!-- Left navbar-header -->
     <%@ include file="/common/admin/menu.jsp" %>
     <!-- Left navbar-header end -->
-
     <dec:body/>
 </div>
 
@@ -75,6 +77,8 @@
 <script src="<c:url value="/template/js/member.js"/>"></script>
 <script src="<c:url value="/template/js/job.js"/>"></script>
 <script src="<c:url value="/template/js/task.js"/>"></script>
+
+
 <script>
     $(document).ready(function () {
         $('#example').DataTable();

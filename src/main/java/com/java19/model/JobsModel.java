@@ -1,10 +1,14 @@
 package com.java19.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 public class JobsModel {
     private int id;
     private String name;
+    @SerializedName("startDate")
     private String start_date;
+    @SerializedName("endDate")
     private String end_date;
 
     public JobsModel() {}

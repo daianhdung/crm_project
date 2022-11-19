@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button id="edit-job" type="submit" class="btn btn-success">Lưu lại</button>
+                                        <button type="button" id="edit-job" class="btn btn-success">Lưu lại</button>
                                         <a href="<c:url value="/admin-work"/>" class="btn btn-primary">Quay lại</a>
                                     </div>
                                 </div>
