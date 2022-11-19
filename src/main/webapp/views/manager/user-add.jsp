@@ -46,8 +46,6 @@
                                     <label class="col-sm-12">Select Role</label>
                                     <div class="col-sm-12">
                                         <select name="role" class="form-control form-control-line">
-                                            <option>ROLE_ADMIN</option>
-                                            <option>ROLE_MANAGER</option>
                                             <option>ROLE_USER</option>
                                         </select>
                                     </div>

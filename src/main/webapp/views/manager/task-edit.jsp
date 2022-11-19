@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Cập nhập thông tin</h4>
+                        <h4 class="page-title">Update task</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -21,29 +21,40 @@
                     <div class="col-md-2 col-12"></div>
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
-                            <form method="post" class="form-horizontal form-material">
+                            <form id="taskEdit" class="form-horizontal form-material">
                                 <div class="form-group">
+                                    <input type="hidden" name="id" value="${task.getId()}">
                                     <label class="col-md-12">Tên dự án</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getJobsModel().getName()}" class="form-control form-control-line">
+                                        <input type="text" readonly value="${task.getJobsModel().getName()}" class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Tên công việc</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getName()}" class="form-control form-control-line">
+                                        <input type="text" name="name" value="${task.getName()}" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Người thực hiện</label>
+                                    <div class="col-md-12">
+                                        <select name="userId" class="form-control form-control-line">
+                                            <c:forEach items="${users}" var="user">
+                                                <option value="${user.getId()}">${user.getFullname()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày bắt đầu</label>
                                     <div class="col-md-12">
-                                        <input  type="text" readonly value="${taskEdit.getStartDate()}" class="form-control form-control-line">
+                                        <input type="text" readonly value="${task.getStartDate()}" class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày kết thúc</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getEndDate()}" class="form-control form-control-line">
+                                        <input name="endDate" type="text" value="${task.getEndDate()}" class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -58,8 +69,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success">Lưu lại</button>
-                                        <a href="<c:url value="/admin-profile"/>" class="btn btn-primary">Quay lại</a>
+                                        <button type="button" id="edit-task" class="btn btn-success">Lưu lại</button>
+                                        <a href="<c:url value="/manager-task"/>" class="btn btn-primary">Quay lại</a>
                                     </div>
                                 </div>
                             </form>

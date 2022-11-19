@@ -2,6 +2,7 @@ package com.java19.controller.manager;
 
 import com.java19.model.UsersModel;
 import com.java19.service.IRoleService;
+import com.java19.service.ITaskServices;
 import com.java19.service.IUsersService;
 import com.java19.utils.ValidationUtil;
 
@@ -19,6 +20,8 @@ public class MemberController extends HttpServlet {
     IUsersService usersService;
     @Inject
     IRoleService roleService;
+    @Inject
+    ITaskServices taskServices;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,6 +31,14 @@ public class MemberController extends HttpServlet {
             req.getRequestDispatcher("views/manager/user-table.jsp").forward(req, resp);
         }else if (action.equals("addmem")) {
             req.getRequestDispatcher("views/manager/user-add.jsp").forward(req, resp);
+        } else if (action.equals("detail")) {
+            int id = Integer.parseInt(req.getParameter("id"));
+            UsersModel user = usersService.findUserById(id);
+            user.setUndoneTask(taskServices.findTaskByStatusAndUser(id, 1));
+            user.setProgressTask(taskServices.findTaskByStatusAndUser(id, 2));
+            user.setCompleteTask(taskServices.findTaskByStatusAndUser(id, 3));
+            req.setAttribute("user", user);
+            req.getRequestDispatcher("views/manager/member-details.jsp").forward(req, resp);
         }
     }
 

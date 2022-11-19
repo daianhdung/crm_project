@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Cập nhập thông tin</h4>
+                        <h4 class="page-title">Thêm mới công việc</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -23,43 +23,51 @@
                         <div class="white-box">
                             <form method="post" class="form-horizontal form-material">
                                 <div class="form-group">
-                                    <label class="col-md-12">Tên dự án</label>
+                                    <label class="col-md-12">Dự án</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getJobsModel().getName()}" class="form-control form-control-line">
+                                        <select name="txtWorkId" class="form-control form-control-line">
+                                            <c:forEach items="${works}" var="work">
+                                                <option value="${work.getId()}">${work.getName()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Tên công việc</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getName()}" class="form-control form-control-line">
+                                        <input name="txtTaskName" type="text" placeholder="Tên công việc"
+                                            class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Người thực hiện</label>
+                                    <div class="col-md-12">
+                                        <select name="txtUserId" class="form-control form-control-line">
+                                            <c:forEach items="${users}" var="user">
+                                                <option value="${user.getId()}">${user.getFullname()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày bắt đầu</label>
                                     <div class="col-md-12">
-                                        <input  type="text" readonly value="${taskEdit.getStartDate()}" class="form-control form-control-line">
+                                        <input name="txtTaskStartDate" type="text" placeholder="dd-MM-yyyy"
+                                            class="form-control form-control-line"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-12">Ngày kết thúc</label>
                                     <div class="col-md-12">
-                                        <input type="text" readonly value="${taskEdit.getEndDate()}" class="form-control form-control-line">
+                                        <input name="txtTaskEndDate" type="text" placeholder="dd-MM-yyyy"
+                                            class="form-control form-control-line"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Trạng thái</label>
-                                    <div class="col-md-12">
-                                        <select name="statusId" class="form-control form-control-line">
-                                            <option value="1">Chưa thực hiện</option>
-                                            <option value="2">Đang thực hiện</option>
-                                            <option value="3">Đã hoàn thành</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                                    <h5 class="text-danger">${mes}</h5>
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-success">Lưu lại</button>
-                                        <a href="<c:url value="/admin-profile"/>" class="btn btn-primary">Quay lại</a>
+                                        <a href="<c:url value="/manager-task"/>" class="btn btn-primary">Quay lại</a>
                                     </div>
                                 </div>
                             </form>

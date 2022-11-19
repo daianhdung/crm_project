@@ -13,7 +13,7 @@
             <i class="fa fa-bars"></i>
         </a>
         <div class="top-left-part">
-            <a class="logo" href="index.jsp">
+            <a class="logo" href="<c:url value="/manager-home"/>">
                 <b>
                     <img src="<c:url value="/template/plugins/images/pixeladmin-logo.png"/>" alt="home" />
                 </b>
@@ -41,7 +41,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="<c:url value="/manager-profile"/>">Thông tin cá nhân</a></li>
-                        <li><a href="#">Thống kê công việc</a></li>
+                        <li><a href="<c:url value="/manager-profile?action=detail"/>">Thống kê công việc</a></li>
                         <li class="divider"></li>
                         <li><a href="<c:url value="/logout"/>">Đăng xuất</a></li>
                     </ul>

@@ -17,6 +17,7 @@
     <link href="<c:url value="/template/bootstrap/dist/css/bootstrap.min.css"/>" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="<c:url value="/template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>" rel="stylesheet">
     <!-- toast CSS -->
     <link href="<c:url value="/template/plugins/bower_components/toast-master/css/jquery.toast.css"/>" rel="stylesheet">
     <!-- morris CSS -->
@@ -65,6 +66,7 @@
 <script src="<c:url value="/template/js/jquery.slimscroll.js"/>"></script>
 <!--Wave Effects -->
 <script src="<c:url value="/template/js/waves.js"/>"></script>
+<script src="<c:url value="/template/js/jquery.dataTables.js"/>"></script>
 <!--Counter js -->
 <script src="<c:url value="/template/plugins/bower_components/waypoints/lib/jquery.waypoints.js"/>"></script>
 <script src="<c:url value="/template/plugins/bower_components/counterup/jquery.counterup.min.js"/>"></script>
@@ -75,6 +77,9 @@
 <script src="<c:url value="/template/js/custom.min.js"/>"></script>
 <script src="<c:url value="/template/js/dashboard1.js"/>"></script>
 <script src="<c:url value="/template/plugins/bower_components/toast-master/js/jquery.toast.js"/>"></script>
+<script src="<c:url value="/template/js/member.js"/>"></script>
+<script src="<c:url value="/template/js/job.js"/>"></script>
+<script src="<c:url value="/template/js/task.js"/>"></script>
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
