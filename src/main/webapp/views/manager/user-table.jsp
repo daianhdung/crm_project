@@ -42,7 +42,6 @@
                                     <td>${mem.getEmail()}</td>
                                     <td>${mem.getRole().getName()}</td>
                                     <td>
-                                        <a href="#" memId="${mem.getId()}" class="btn btn-sm btn-danger btn-delete">Xóa</a>
                                         <a href="<c:url value="/manager-member?action=detail&id=${mem.getId()}"/>" class="btn btn-sm btn-info">Xem</a>
                                     </td>
                                 </tr>
