@@ -42,7 +42,6 @@
                                                 <td>${role.getName()}</td>
                                                 <td>${role.getDescription()}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-primary btn-update">Sửa</a>
                                                     <a href="#" roleId="${role.getId()}" class="btn btn-sm btn-danger btn-deleteRole">Xóa</a>
                                                 </td>
                                             </tr>

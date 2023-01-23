@@ -13,7 +13,7 @@
             <i class="fa fa-bars"></i>
         </a>
         <div class="top-left-part">
-            <a class="logo" href="index.jsp">
+            <a class="logo" href="<c:url value="/home-page"/>">
                 <b>
                     <img src="<c:url value="/template/plugins/images/pixeladmin-logo.png"/>" alt="home" />
                 </b>

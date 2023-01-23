@@ -37,7 +37,7 @@ $(document).ready(function () {
             if(data.success){
                 showToastSuccess('Thao tác thành công', 'update task')
             }else{
-                showToastError("Thất bại", 'update task')
+                showToastError("Thất bại", data.description)
             }
         }).fail(function (data){
             showToastError("Thất bại", 'update task')

@@ -46,7 +46,7 @@
                                     <label class="col-sm-12">Select Role</label>
                                     <div class="col-sm-12">
                                         <select name="role" class="form-control form-control-line">
-                                            <c:forEach items="${roles}" var="role">
+                                            <c:forEach items="${listRole}" var="role">
                                                 <option>${role.getName()}</option>
                                             </c:forEach>
                                         </select>

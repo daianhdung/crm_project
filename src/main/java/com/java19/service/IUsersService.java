@@ -8,11 +8,13 @@ public interface IUsersService {
 
     List<UsersModel> getAllMember();
     public boolean deleteUsersById(int id);
-    boolean insertUser(UsersModel usersModel);
+    boolean insertUser(UsersModel usersModel, String role);
 
     UsersModel getNameById(int id);
 
     UsersModel findUserById(int id);
 
     boolean updateRoleUser(int userId, int roleId);
+
+    List<UsersModel> listUserByTask(List<Integer> listUserId);
 }

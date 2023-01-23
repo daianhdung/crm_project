@@ -48,26 +48,20 @@ public class TaskController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String taskName = req.getParameter("txtTaskName");
-        String userId = req.getParameter("txtUserId");
-        String workId = req.getParameter("txtWorkId");
+        int userId = Integer.parseInt(req.getParameter("txtUserId"));
+        int workId = Integer.parseInt(req.getParameter("txtWorkId"));
         String startDate = req.getParameter("txtTaskStartDate");
         String endDate = req.getParameter("txtTaskEndDate");
 
-        if(!ValidationUtil.validNull(taskName, userId, workId, startDate, endDate)){
-            String mes = "Không được để trống";
+        TasksModel tasksModel = new TasksModel(taskName, startDate, endDate);
+        boolean isSuccess = taskServices.insertTask(tasksModel, userId, workId);
+        if(!isSuccess){
+            String mes = "Thất bại, vui lòng kiểm tra lại dữ liệu";
             req.setAttribute("mes", mes);
             req.setAttribute("users", usersService.getAllMember());
             req.setAttribute("works", jobServices.getAll());
             req.getRequestDispatcher("views/admin/task-add.jsp").forward(req, resp);
         }else {
-            UsersModel usersModel = new UsersModel();
-            usersModel.setId(Long.parseLong(userId));
-            JobsModel jobsModel = new JobsModel();
-            jobsModel.setId(Integer.parseInt(workId));
-            StatusModel statusModel = new StatusModel();
-            statusModel.setId(1);
-            TasksModel tasksModel = new TasksModel(taskName, startDate, endDate, usersModel, jobsModel, statusModel);
-            taskServices.insertTask(tasksModel);
             resp.sendRedirect(req.getContextPath() + "/admin-task");
         }
     }

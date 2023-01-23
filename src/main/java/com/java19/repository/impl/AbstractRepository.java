@@ -82,7 +82,7 @@ public class AbstractRepository<T> implements GenericRepository<T> {
                 try {
                     connection.rollback();
                 }catch (SQLException e1){
-                    System.out.println("Lỗi insert");
+                    e1.printStackTrace();
                 }
             }
             return false;
@@ -114,13 +114,18 @@ public class AbstractRepository<T> implements GenericRepository<T> {
             setParameter(statement, parameters);
             statement.executeUpdate();
             connection.commit();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             if (connection != null) {
                 try {
                     connection.rollback();
                 } catch (SQLException e1) {
-                    System.out.println("Lỗi update Abstract");
+                    e1.printStackTrace();
                 }
+            }
+            try {
+                throw new SQLException(e.getMessage());
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
         } finally {
             try {

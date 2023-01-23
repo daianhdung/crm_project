@@ -17,11 +17,10 @@ public class UsersModel {
     private RoleModel role = new RoleModel();
     public UsersModel() {}
 
-    public UsersModel(String email, String password, String fullname, int role_id) {
+    public UsersModel(String email, String password, String fullname) {
         this.email = email;
         this.password = password;
         this.fullname = fullname;
-        this.role_id = role_id;
     }
 
     public long getId() {

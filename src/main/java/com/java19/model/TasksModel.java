@@ -20,14 +20,10 @@ public class TasksModel {
 
     public TasksModel(){}
 
-    public TasksModel(String name, String startDate, String endDate, UsersModel usersModel, JobsModel jobsModel
-    , StatusModel statusModel) {
+    public TasksModel(String name, String startDate, String endDate) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.usersModel = usersModel;
-        this.jobsModel = jobsModel;
-        this.statusModel = statusModel;
     }
 
     public int getId() {

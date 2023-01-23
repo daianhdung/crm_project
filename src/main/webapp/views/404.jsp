@@ -47,9 +47,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src='bootstrap/dist/js/bootstrap.min.js'></script>
     <script type="text/javascript">
-    $(function() {
-        $(".preloader").fadeOut();
-    });
+
     </script>
 </body>
 

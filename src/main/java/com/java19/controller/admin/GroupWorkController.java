@@ -6,7 +6,6 @@ import com.java19.model.UsersModel;
 import com.java19.service.IJobServices;
 import com.java19.service.ITaskServices;
 import com.java19.service.IUsersService;
-import com.java19.utils.ValidationUtil;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin-work"})
@@ -36,14 +34,7 @@ public class GroupWorkController extends HttpServlet {
         } else if (action.equals("details")) {
             int jobId = Integer.parseInt(req.getParameter("id"));
             List<Integer> listUserId = taskServices.findIdUserInProject(jobId);
-            List<UsersModel> listUser = new ArrayList<>();
-            for(int index : listUserId){
-                UsersModel user = usersService.getNameById(index);
-                user.setUndoneTask(taskServices.findTaskByStatusAndUser(index, 1));
-                user.setProgressTask(taskServices.findTaskByStatusAndUser(index, 2));
-                user.setCompleteTask(taskServices.findTaskByStatusAndUser(index, 3));
-                listUser.add(user);
-            }
+            List<UsersModel> listUser = usersService.listUserByTask(listUserId);
             req.setAttribute("namesStaff",listUser);
             req.getRequestDispatcher("/views/admin/groupwork-details.jsp").forward(req, resp);
 
@@ -64,14 +55,14 @@ public class GroupWorkController extends HttpServlet {
         String startDate = req.getParameter("txtStartDate");
         String endDate = req.getParameter("txtEndDay");
 
-        if(!ValidationUtil.validNull(name, startDate, endDate)){
-            String mes = "Không được để trống";
+        JobsModel jobsModel = new JobsModel(name, startDate, endDate);
+        boolean isSuccess = jobServices.insertJob(jobsModel);
+        if(isSuccess){
+            resp.sendRedirect(req.getContextPath() + "/admin-work");
+        }else {
+            String mes = "Dữ liệu nhập vào không hợp lệ, vui lòng thử lại";
             req.setAttribute("mes", mes);
             req.getRequestDispatcher("views/admin/groupwork-add.jsp").forward(req, resp);
-        }else {
-            JobsModel jobsModel = new JobsModel(name, startDate, endDate);
-            jobServices.insertJob(jobsModel);
-            resp.sendRedirect(req.getContextPath() + "/admin-work");
         }
     }
 }

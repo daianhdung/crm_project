@@ -7,7 +7,7 @@ import java.util.List;
 public interface ITaskServices {
 
     List<TasksModel> getAll();
-    boolean insertTask(TasksModel tasksModel);
+    boolean insertTask(TasksModel tasksModel, int userId, int workId);
 
     boolean deleteTask(int id);
 
@@ -22,5 +22,7 @@ public interface ITaskServices {
     List<Integer> findIdUserInProject(int jobId);
 
     boolean updateTask(TasksModel tasksModel);
+
+
 
 }

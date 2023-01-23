@@ -39,7 +39,7 @@ $(document).ready(function () {
                 showToastSuccess('Thao tác thành công', 'delete job')
             }else {
                 //xóa thất bại
-                showToastError("Thất bại", 'delete job')
+                showToastError("Thất bại", data.description)
             }
         })
     });
@@ -56,11 +56,14 @@ $(document).ready(function () {
             data: JSON.stringify(data),
             dataType: 'json',
         }).done(function (data){
-            console.log(data);
-            // window.location.href = "/admin-work?action=edit&id=" + data.id;
-            showToastSuccess('Thao tác thành công', 'update job')
+           if(data.success){
+               showToastSuccess('Thao tác thành công', data.description)
+               console(123123)
+           }else{
+               showToastError("Thất bại", data.description + '.Vui lòng nhập đúng dữ liệu')
+           }
         }).fail(function (data){
-            showToastError("Thất bại", 'update job')
+            showToastError("Thất bại", data.description)
         })
     });
 })

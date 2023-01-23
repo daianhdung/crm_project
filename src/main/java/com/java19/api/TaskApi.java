@@ -34,7 +34,8 @@ public class TaskApi extends HttpServlet {
         String data = GenericApi.getParamsFromPost(req);
         TasksModel tasksModel = gson.fromJson(data, TasksModel.class);
         boolean isSuccess = taskServices.updateTask(tasksModel);
-        GenericApi.returnRespond(200, isSuccess, isSuccess ? "Update thành công" : "Update thất bại", resp);
+        GenericApi.returnRespond(200, isSuccess, isSuccess ? "Update thành công" : "Update thất bại. " +
+                "Vui lòng nhập đúng dữ liệu", resp);
     }
 
 

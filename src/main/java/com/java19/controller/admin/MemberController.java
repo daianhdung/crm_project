@@ -35,6 +35,7 @@ public class MemberController extends HttpServlet {
         if(action == null){
             req.getRequestDispatcher("views/admin/user-table.jsp").forward(req, resp);
         }else if (action.equals("addmem")) {
+            req.setAttribute("listRole", roleService.getAllRoles());
             req.getRequestDispatcher("views/admin/user-add.jsp").forward(req, resp);
         }else if (action.equals("edit")) {
             int id = Integer.parseInt(req.getParameter("id"));
@@ -65,14 +66,16 @@ public class MemberController extends HttpServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
             String role = req.getParameter("role");
-            if(!ValidationUtil.validNull(username, email, password, role)){
-                String mes = "Không được để trống";
+
+            UsersModel usersModel = new UsersModel(email, password, username);
+            boolean isSuccess = usersService.insertUser(usersModel, role);
+
+            if(!isSuccess){
+                String mes = "Thất bại, vui lòng kiểm tra lại dữ liệu";
                 req.setAttribute("mes", mes);
+                req.setAttribute("listRole", roleService.getAllRoles());
                 req.getRequestDispatcher("views/admin/user-add.jsp").forward(req, resp);
             }else {
-                int id = roleService.findIdByName(role);
-                UsersModel usersModel = new UsersModel(email, password, username, id);
-                usersService.insertUser(usersModel);
                 resp.sendRedirect(req.getContextPath() + "/admin-member");
             }
         }

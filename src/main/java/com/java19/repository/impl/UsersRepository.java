@@ -62,5 +62,11 @@ public class UsersRepository extends AbstractRepository<UsersModel> implements I
         update(sql, roleId, userId);
     }
 
+    @Override
+    public UsersModel getUserByEmail(String email) {
+        String sql = "SELECT * FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.email = ?";
+        return query(sql, new UserMapper(), email).get(0);
+    }
+
 
 }

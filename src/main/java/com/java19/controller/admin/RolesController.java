@@ -1,4 +1,4 @@
-package com.java19.controller;
+package com.java19.controller.admin;
 
 import com.java19.model.RoleModel;
 import com.java19.service.IRoleService;

@@ -18,4 +18,6 @@ public interface IUsersRepository extends GenericRepository<UsersModel>{
     UsersModel findUserById(int id);
 
     void updateRoleUser(int userId, int roleId);
+
+    UsersModel getUserByEmail(String email);
 }

@@ -36,14 +36,7 @@ public class GroupWorkController extends HttpServlet {
         } else if (action.equals("details")) {
             int jobId = Integer.parseInt(req.getParameter("id"));
             List<Integer> listUserId = taskServices.findIdUserInProject(jobId);
-            List<UsersModel> listUser = new ArrayList<>();
-            for(int index : listUserId){
-                UsersModel user = usersService.getNameById(index);
-                user.setUndoneTask(taskServices.findTaskByStatusAndUser(index, 1));
-                user.setProgressTask(taskServices.findTaskByStatusAndUser(index, 2));
-                user.setCompleteTask(taskServices.findTaskByStatusAndUser(index, 3));
-                listUser.add(user);
-            }
+            List<UsersModel> listUser = usersService.listUserByTask(listUserId);
             req.setAttribute("namesStaff",listUser);
             req.getRequestDispatcher("/views/manager/groupwork-details.jsp").forward(req, resp);
 
@@ -52,8 +45,6 @@ public class GroupWorkController extends HttpServlet {
             req.setAttribute("work", jobServices.findJobById(id));
             req.getRequestDispatcher("/views/manager/job-edit.jsp").forward(req, resp);
         }
-
-
     }
 
     @Override

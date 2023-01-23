@@ -4,6 +4,7 @@ import com.java19.mapper.JobMapper;
 import com.java19.model.JobsModel;
 import com.java19.repository.IJobRespository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 

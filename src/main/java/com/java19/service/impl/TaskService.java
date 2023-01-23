@@ -1,23 +1,51 @@
 package com.java19.service.impl;
 
+import com.java19.model.JobsModel;
+import com.java19.model.StatusModel;
 import com.java19.model.TasksModel;
+import com.java19.model.UsersModel;
+import com.java19.repository.IJobRespository;
+import com.java19.repository.IStatusRepository;
 import com.java19.repository.ITaskRepository;
+import com.java19.repository.IUsersRepository;
 import com.java19.service.ITaskServices;
+import com.java19.utils.ValidationUtil;
 
 import javax.inject.Inject;
 import java.util.List;
 
+import static com.java19.utils.ValidationUtil.validateDate;
+
 public class TaskService implements ITaskServices {
     @Inject
     ITaskRepository taskRepository;
+    @Inject
+    IUsersRepository usersRepository;
+    @Inject
+    IJobRespository jobRespository;
+    @Inject
+    IStatusRepository statusRepository;
     @Override
     public List<TasksModel> getAll() {
         return taskRepository.getAll();
     }
 
     @Override
-    public boolean insertTask(TasksModel tasksModel) {
-        return taskRepository.insertTask(tasksModel);
+    public boolean insertTask(TasksModel tasksModel, int userId, int workId) {
+        UsersModel usersModel = usersRepository.findUserById(userId);
+        JobsModel jobsModel = jobRespository.findJobById(workId);
+        StatusModel statusModel = new StatusModel();
+        statusModel.setId(1);
+        tasksModel.setUsersModel(usersModel);
+        tasksModel.setJobsModel(jobsModel);
+        tasksModel.setStatusModel(statusModel);
+        if (!ValidationUtil.validNull(tasksModel.getName(), tasksModel.getStartDate(), tasksModel.getEndDate())) {
+            return false;
+        } else if (!validateDate(tasksModel.getStartDate()) || !validateDate(tasksModel.getEndDate())) {
+            return false;
+        } else {
+            return taskRepository.insertTask(tasksModel);
+        }
     }
 
     @Override
@@ -65,7 +93,11 @@ public class TaskService implements ITaskServices {
     @Override
     public boolean updateTask(TasksModel tasksModel) {
         try {
-            taskRepository.updateTask(tasksModel);
+            if (!ValidationUtil.validNull(tasksModel.getName(), tasksModel.getEndDate())) {
+                return false;
+            } else {
+                taskRepository.updateTask(tasksModel);
+            }
         }catch (Exception e){
             System.out.println("Error update task");
             return false;
